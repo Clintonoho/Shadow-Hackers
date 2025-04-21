@@ -1,0 +1,19 @@
+import sqlite3
+
+conn = sqlite3.connect('seniors.db')
+cursor = conn.cursor()
+
+cursor.execute('''
+CREATE TABLE IF NOT EXISTS quiz_results (
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    name TEXT NOT NULL,
+    score INTEGER,
+    total_questions INTEGER,
+    date_taken TEXT
+)
+''')
+
+conn.commit()
+conn.close()
+
+print("✅ Table 'quiz_results' created successfully in seniors.db")
